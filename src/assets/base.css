@@ -1,0 +1,27 @@
+@import '/fonts/fonts.css';
+
+:root {
+  --primary-color: #c0325d;
+  --gradient-color: #e9525f;
+  --light-grey: #726c7d;
+  --darker-grey: #14151a;
+  --active: #4ae531;
+  --white-color: #ffffff;
+  --background-color: #0b0b0e;
+  --light-color: #e2daec;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--background-color);
+  transition: color 0.5s, background-color 0.5s;
+  font-family: 'Inter';
+}
