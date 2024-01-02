@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import type { ComponentProps } from 'vue-component-type-helpers';
 
-import { VerificationIcon } from "@/shared/index.ts";
+import { VerificationIcon } from "@/shared/index";
 
 type VerificationIconArgs = ComponentProps<typeof VerificationIcon>
 

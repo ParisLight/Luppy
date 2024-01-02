@@ -1,4 +1,5 @@
 @import '/fonts/fonts.css';
+@import './transitions.css';
 
 :root {
   --primary-color: #c0325d;
@@ -9,6 +10,8 @@
   --white-color: #ffffff;
   --background-color: #0b0b0e;
   --light-color: #e2daec;
+  --error: #FF6464;
+  --gradient: linear-gradient(256deg, #E9525F 4.96%, #EF7D85 73.81%);
 }
 
 *,
@@ -23,5 +26,9 @@ body {
   min-height: 100vh;
   background: var(--background-color);
   transition: color 0.5s, background-color 0.5s;
+  font-family: 'Inter';
+}
+
+p, span, input, ::before, ::after{
   font-family: 'Inter';
 }

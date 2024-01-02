@@ -1,23 +1,38 @@
 <template>
   <div class="main">
-    <!-- <BaseButton />
-    <StepsCircle :step="'second'" />
-    <TagButton :class="{ 'is-active': activeBtn }" @click="onClickStep">
-      Click
-    </TagButton>
-    <VerificationIcon /> -->
-    <ToggleComponent />
-    <SliderRange :value="15" />
+    <LoaderComponent
+        :state='activeStateLoader'
+        :progress="activeProgress"
+    />
+    <StepProgressbar :step="'end'"/>
   </div>
 </template>
 <script setup lang="ts">
-import { BaseButton, SliderRange, StepsCircle, TagButton, ToggleComponent, VerificationIcon } from '@/shared/index'
+import { CheckboxPrimary, StepProgressbar, LoaderComponent } from '@/shared/index';
 import { ref } from 'vue';
 
-const activeBtn = ref(false);
-const onClickStep = (): void => {
-  activeBtn.value = !activeBtn.value;
+const activeProgress = ref(0);
+const activeStateLoader = ref('grey');
+const interval = setInterval((): void => {
+  activeProgress.value += 1;
+  defineStateLoader()
+  if(activeProgress.value >= 100){
+    clearInterval(interval);
+    return;
+  }
+}, 40)
+
+const defineStateLoader = () => {
+  if(typeof activeStateLoader.value === 'undefined') return 'grey'
+  if(activeProgress.value % 100 === 0){
+    activeStateLoader.value = 'gradient';
+    return;
+  }
+  if(activeProgress.value % 10 === 0){
+    activeStateLoader.value = activeStateLoader.value === 'grey' ? 'white' : 'grey';
+  }
 }
+
 </script>
 <style lang="scss">
 .main {

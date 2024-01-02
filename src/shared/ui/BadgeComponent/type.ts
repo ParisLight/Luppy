@@ -1,3 +1,4 @@
 export interface Props {
-    // color: 
+    color?: 'follow' | 'error' | 'disabled' | 'active' | 'connect',
+    text: string
 }
