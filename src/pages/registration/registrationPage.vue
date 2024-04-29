@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="login-page__steps">
-        <Transition name="slide-right" mode="out-in">
+        <Transition :name="stepsAnimation" mode="out-in">
           <div
               class="login-page__step"
               :key="currentStep.id"
@@ -44,7 +44,7 @@
               />
               <div class="login-page__already-registered">
                 <span style="font-weight: 300">Already have an account?</span>
-                <span style="font-weight: 400" @click="router.push('/login')"> Log in</span>
+                <span style="font-weight: 400" @click="router.push('/registration')"> Log in</span>
               </div>
             </div>
           </div>
@@ -78,6 +78,32 @@
                   :show-search="false"
                   v-model="userInfo.breed"
               />
+              <div class="login-page__radios">
+                <div class="login-page__radios-name">
+                  <span>Gender:</span>
+                </div>
+                <RadioButtonGroup
+                    class="login-page__radio-button-group"
+                    :list="gendersList"
+                    :default="0"
+                    @change="userInfo.gender = $event"
+                />
+              </div>
+              <div class="login-page__radios">
+                <div class="login-page__radios-name">
+                  <span>Size:</span>
+                </div>
+                <RadioButtonGroup
+                    class="login-page__radio-button-group"
+                    :list="sizesList"
+                    :default="0"
+                    @change="userInfo.size = $event"
+                />
+              </div>
+              <DatePicker
+                  @changeDate="userInfo.dogAge = $event"
+                  :placeholder="'Select Age'"
+              />
               <BaseButton
                   class="login-page__continue"
                   :type="'primary'"
@@ -85,10 +111,39 @@
                   :state="userInfo.mail.length < 3 ? 'disabled' : 'default'"
                   @click="goToNextStep()"
               />
-              <div class="login-page__already-registered">
-                <span style="font-weight: 300">Already have an account?</span>
-                <span style="font-weight: 400" @click="router.push('/login')"> Log in</span>
-              </div>
+            </div>
+          </div>
+          <div
+              v-else-if="currentStep.type && currentStep.type === 'end'"
+              class="login-page__step"
+              :key="currentStep.id"
+          >
+            <div class="login-page__title">
+              <span>Tell us about your 🐶’ soulmate</span>
+            </div>
+            <div class="login-page__descr">
+              <span>
+                Help us find the perfect match for your dog by providing some information about them.
+              </span>
+            </div>
+            <div class="login-page__content">
+              <MultiTags
+                  :title="'Temperament:'"
+                  :model="userInfo.temperament"
+                  :list="temperamentList"
+              />
+              <MultiTags
+                  :title="'Interests:'"
+                  :model="userInfo.interests"
+                  :list="interestsList"
+              />
+              <BaseButton
+                  class="login-page__continue"
+                  :type="'primary'"
+                  :text="'Continue'"
+                  :state="userInfo.mail.length < 3 ? 'disabled' : 'default'"
+                  @click="goToNextStep()"
+              />
             </div>
           </div>
         </Transition>
@@ -100,27 +155,25 @@
 <script setup lang="ts">
 import { ref, computed, reactive } from 'vue'
 import { useRouter } from "vue-router";
-import { StepProgressbar, InputField, BaseButton } from '@/shared/index'
+import {
+  StepProgressbar,
+  InputField,
+  BaseButton,
+  RadioButtonGroup,
+  DatePicker
+} from '@/shared/index'
+import { MultiTags } from "@/features/MultiTags/index";
+import {
+  steps,
+  temperamentList,
+  sizesList,
+  gendersList,
+  interestsList
+} from '@/content/registrationPage'
 
 const router = useRouter()
 
-const steps = ref([
-  {
-    id: 0,
-    type: 'start',
-    active: true
-  },
-  {
-    id: 1,
-    type: 'half',
-    active: false
-  },
-  {
-    id: 2,
-    type: 'end',
-    active: false
-  }
-])
+const stepsAnimation = ref('slide-right')
 
 const currentStep = computed(() => steps.value.find(step => step.active))
 
@@ -133,7 +186,8 @@ type userType = {
   breed: string,
   gender: Gender,
   size: Size,
-  temperament: string[]
+  temperament: Array<object>,
+  interests: Array<object>
 }
 const userInfo : userType = reactive({
   mail: '',
@@ -142,17 +196,16 @@ const userInfo : userType = reactive({
   breed: '',
   gender: 'F',
   size: 'M',
-  temperament: []
+  temperament: [],
+  interests: []
 })
 
 const goToNextStep = () => {
   const indexCurrentStep = steps.value.findIndex(step => step.id === currentStep.value.id)
-  console.log(indexCurrentStep)
-  console.log(steps.value[indexCurrentStep + 1].active)
   if(indexCurrentStep === -1 || !steps.value[indexCurrentStep + 1]) return
   steps.value[indexCurrentStep].active = false
   steps.value[indexCurrentStep + 1].active = true
-  console.log(steps.value, 'steps')
+  stepsAnimation.value = 'slide-right'
 }
 const goToBackStep = () => {
   const indexCurrentStep = steps.value.findIndex(step => step.id === currentStep.value.id)
@@ -163,13 +216,11 @@ const goToBackStep = () => {
   if(!indexCurrentStep || indexCurrentStep === -1) return
 
   steps.value[indexCurrentStep - 1].active = true
+  stepsAnimation.value = 'slide-left'
 }
 </script>
 <style lang="scss" scoped>
 .login-page {
-  &__step-progressbar {
-
-  }
   &__steps {
     margin-top: 35px;
   }
@@ -203,12 +254,24 @@ const goToBackStep = () => {
   }
   &__content {
     margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 35px;
   }
-  &__continue {
-    margin-top: 35px;
+  &__radios {
+    display: flex;
+    align-items: center;
+    &-name {
+      width: 90px;
+      span {
+        font-weight: 300;
+      }
+    }
+  }
+  &__radio-button-group {
+    width: 100%;
   }
   &__already-registered {
-    margin-top: 30px;
     text-align: center;
     span {
       color: var(--light-color);

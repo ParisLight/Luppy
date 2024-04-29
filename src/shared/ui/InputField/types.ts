@@ -5,5 +5,6 @@ export interface Props{
     labelText: string,
     placeholder?: string,
     state?: 'error' | 'disabled',
-    caption?: string
+    caption?: string,
+    type?: 'text' | 'password'
 }

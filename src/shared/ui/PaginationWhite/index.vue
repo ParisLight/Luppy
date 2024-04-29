@@ -2,7 +2,7 @@
   <div class="pagination-white">
     <div
         class="pagination-white__item"
-        :class="{'is-active': props.activeElement.id === item.id}"
+        :class="{'is-active': props.activeElement?.id === item?.id}"
         v-for="(item, index) in props.paginationList"
         :key="item.id ? item.id : index"
     >

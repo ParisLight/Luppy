@@ -17,7 +17,6 @@
 </template>
 <script setup lang="ts">
 import type { Props } from './types';
-import { defineModel } from "vue";
 
 const props = withDefaults(defineProps<Props>(), {
     labelText: ''

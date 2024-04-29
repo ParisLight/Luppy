@@ -1,3 +1,3 @@
 export interface Props {
-    step?: 'first' | 'second' | 'third'
+    step?: 0 | 1 | 2
 }

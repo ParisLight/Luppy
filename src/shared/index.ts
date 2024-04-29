@@ -9,14 +9,16 @@ import InputField from './ui/InputField/index.vue';
 import PairPhoto from './ui/PairPhoto/index.vue';
 import CheckboxPrimary from './ui/CheckboxPrimary/index.vue';
 import RadioButtonPrimary from './ui/RadioButtonPrimary/index.vue';
+import RadioButtonGroup from "./ui/RadioButtonGroup/RadioButtonGroup.vue";
 import LoaderComponent from './ui/LoaderComponent/index.vue';
 import ProgressbarPrimary from './ui/ProgressbarPrimary/index.vue';
 import SegmentControl from './ui/SegmentControl/index.vue';
 import PaginationWhite from './ui/PaginationWhite/index.vue';
 import StepProgressbar from './ui/StepProgressbar/index.vue';
+import DatePicker from './ui/DatePicker/index.vue'
 
 export { 
-    BaseButton, 
+    BaseButton,
     StepsCircle, 
     TagButton, 
     VerificationIcon, 
@@ -27,9 +29,11 @@ export {
     PairPhoto,
     CheckboxPrimary,
     RadioButtonPrimary,
+    RadioButtonGroup,
     LoaderComponent,
     ProgressbarPrimary,
     SegmentControl,
     PaginationWhite,
-    StepProgressbar
+    StepProgressbar,
+    DatePicker
 };

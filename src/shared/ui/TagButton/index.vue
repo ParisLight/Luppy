@@ -1,11 +1,16 @@
 <template>
-    <div class="tag-button">
-        <span>
-            <slot></slot>
-        </span>
+    <div class="tag-button" @click="$emit('click')">
+        <span>{{ text }}</span>
     </div>
 </template>
 <script setup lang="ts">
+const props = defineProps({
+  text: {
+    type: String,
+    default: 'tagText'
+  }
+})
+const emit = defineEmits(['click'])
 </script>
 <style lang="scss" scoped>
 .tag-button{

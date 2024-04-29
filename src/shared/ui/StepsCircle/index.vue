@@ -32,7 +32,7 @@ import { computed } from 'vue';
 import { type Props } from './types';
 
 const props = withDefaults(defineProps<Props>(), {
-  step: 'first'
+  step: 0
 })
 const emits = defineEmits(['clickStep']);
 
@@ -41,9 +41,9 @@ const onClickStep = () :void => {
 }
 
 const defineProgress = computed(() => {
-  if(props.step === 'first') return  '130'
-  if(props.step === 'second') return '60'
-  else return '0'
+  if(props.step === 0) return  '130'
+  if(props.step === 1) return '60'
+  else return 2
 })
 </script>
 <style lang="scss" scoped>
@@ -56,6 +56,7 @@ const defineProgress = computed(() => {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   &__back {
     position: absolute;

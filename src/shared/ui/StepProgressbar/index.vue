@@ -34,7 +34,7 @@ const segments = computed((): object[] => {
       background: var(--light-color);
       transition: .3s ease-in-out background;
       height: 5px;
-      max-width: 90px;
+      //max-width: 90px;
       width: 100%;
       &.is-active{
         background: var(--gradient-color);
