@@ -202,10 +202,13 @@ const userInfo : userType = reactive({
 
 const goToNextStep = () => {
   const indexCurrentStep = steps.value.findIndex(step => step.id === currentStep.value.id)
+  if(indexCurrentStep === steps.value.length) router.push('/home')
   if(indexCurrentStep === -1 || !steps.value[indexCurrentStep + 1]) return
   steps.value[indexCurrentStep].active = false
   steps.value[indexCurrentStep + 1].active = true
   stepsAnimation.value = 'slide-right'
+  console.log(indexCurrentStep, 'current_step')
+  console.log(steps, 'steps_')
 }
 const goToBackStep = () => {
   const indexCurrentStep = steps.value.findIndex(step => step.id === currentStep.value.id)

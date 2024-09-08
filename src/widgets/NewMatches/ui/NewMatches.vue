@@ -31,7 +31,7 @@ import { dogsPreview } from '@/content/homePage'
 </script>
 <style lang="scss" scoped>
 .popular-dogs {
-    padding-left: 30px;
+    /*padding-left: 30px; */
     &__top {
         display: flex;
         align-items: center;

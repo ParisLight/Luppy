@@ -4,6 +4,7 @@ import PopularDogs from "@/widgets/PopularDogs/PopularDogs.vue";
 import TopEvents from "@/widgets/TopEvents/TopEvents.vue";
 import NewMatches from "@/widgets/NewMatches/ui/NewMatches.vue";
 import MenuMain from "@/widgets/MenuMain/MenuMain.vue";
+import NotificationsWindow from "@/widgets/NotificationsWindow/NotificationsWindow.vue";
 
 export {
     HeaderMain,
@@ -11,5 +12,6 @@ export {
     PopularDogs,
     TopEvents,
     NewMatches,
-    MenuMain
+    MenuMain,
+    NotificationsWindow
 }

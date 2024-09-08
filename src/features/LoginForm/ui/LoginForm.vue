@@ -16,6 +16,7 @@
     <BaseButton
         class="login-form__base-button"
         text="Log In"
+        @click="tryToAuth"
     />
   </div>
 </template>
@@ -25,6 +26,7 @@ import {
   BaseButton,
   InputField
 } from '@/shared/index'
+import {router} from "@/app/providers";
 
 type UserInfo = {
   mail: string,
@@ -34,6 +36,11 @@ const userInfo: UserInfo = reactive({
   mail: '',
   password: ''
 })
+
+const tryToAuth = (): void => {
+//   todo: fetch...
+  router.push('/home')
+}
 </script>
 <style lang="scss" scoped>
 .login-form {

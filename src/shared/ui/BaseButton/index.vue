@@ -12,7 +12,12 @@
         <img :src="props.icon" alt=""/>
       </div>
       <div class="base-button__text">
-        <span>{{ props.text }}</span>
+        <span :style="{
+          'font-weight': fontWeight,
+          'font-size': fontSize + 'px'
+        }">
+          {{ props.text }}
+        </span>
       </div>
     </div>
   </div>
@@ -27,7 +32,9 @@ const props = withDefaults(defineProps<Props>(), {
   type: 'primary',
   icon: false,
   iconPosition: 'left',
-  text: 'Base button'
+  text: 'Base button',
+  fontWeight: 600,
+  fontSize: 16
 })
 
 const defineStateButton = computed(() => {

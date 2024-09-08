@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div class="auth-page">
     <div class="content container">
       <div class="auth-page__intro">

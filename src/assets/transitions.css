@@ -49,3 +49,15 @@
     opacity: 0;
     transform: translateX(100%);
 }
+
+.slide-right-same-enter-active,
+.slide-right-same-leave-active {
+    transition: .3s ease-in-out;
+    transition-property: transform;
+}
+.slide-right-same-enter-from {
+    transform: translateX(100%);
+}
+.slide-right-same-leave-to {
+    transform: translateX(100%);
+}

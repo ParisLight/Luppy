@@ -29,4 +29,12 @@ export const routes: Array<RouteRecordRaw> = [
       layout: 'MainLayout'
     }
   },
+  {
+    path: '/chats',
+    name: 'chatsPage',
+    component: () => import('./chats/ChatsPage.vue'),
+    meta: {
+      layout: 'MainLayout'
+    }
+  },
 ]
