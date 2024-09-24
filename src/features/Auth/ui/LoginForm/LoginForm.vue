@@ -2,21 +2,21 @@
   <div class="login-form">
     <form class="login-form__inputs">
       <InputField
-          placeholder="Enter your email address"
-          label-text="Email"
-          v-model="userInfo.mail"
+        placeholder="Enter your email address"
+        label-text="Email"
+        v-model="userInfo.mail"
       />
       <InputField
-          placeholder="Enter your password"
-          label-text="Password"
-          type="password"
-          v-model="userInfo.password"
+        placeholder="Enter your password"
+        label-text="Password"
+        type="password"
+        v-model="userInfo.password"
       />
     </form>
     <BaseButton
-        class="login-form__base-button"
-        text="Log In"
-        @click="tryToAuth"
+      class="login-form__base-button"
+      text="Log In"
+      @click="tryToAuth"
     />
   </div>
 </template>

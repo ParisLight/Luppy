@@ -37,4 +37,10 @@ export const routes: Array<RouteRecordRaw> = [
       layout: 'MainLayout'
     }
   },
+  {
+    path: '/chats/:chatId',
+    name: 'currentChat',
+    component: () => import('./currentChat/CurrentChat.vue'),
+    props: true,
+  }
 ]

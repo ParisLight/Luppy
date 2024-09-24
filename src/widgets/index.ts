@@ -5,6 +5,7 @@ import TopEvents from "@/widgets/TopEvents/TopEvents.vue";
 import NewMatches from "@/widgets/NewMatches/ui/NewMatches.vue";
 import MenuMain from "@/widgets/MenuMain/MenuMain.vue";
 import NotificationsWindow from "@/widgets/NotificationsWindow/NotificationsWindow.vue";
+import Chats from '@/widgets/Chats/Chats.vue'
 
 export {
     HeaderMain,
@@ -13,5 +14,6 @@ export {
     TopEvents,
     NewMatches,
     MenuMain,
-    NotificationsWindow
+    NotificationsWindow,
+    Chats
 }

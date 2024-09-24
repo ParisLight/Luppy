@@ -3,7 +3,7 @@
     <div class="popular-dogs">
         <div class="popular-dogs__top">
             <div class="popular-dogs__title">
-                <span>Top Events</span>
+                <span>New Matches</span>
             </div>
             <div class="popular-dogs__all" v-if="dogsPreview.length > 6">
                 <span>See All</span>

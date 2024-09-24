@@ -6,7 +6,7 @@
           class="main-menu__item"
           v-for="item in menuItems"
           :key="item.id"
-          :class="{'is-active': route.path === item.path}"
+          :class="{'is-active': route.path.includes(item.path)}"
           @click="router.push(item.path), item.cb && typeof item.cb === 'function' ? item.cb() : ''"
         >
           <div class="main-menu__item-icon" v-if="item.icon">
@@ -65,6 +65,7 @@ const menuItems = ref([
   bottom: 0;
   left: 0;
   right: 0;
+  background-color: var(--background-color);
   &__list {
     display: flex;
     align-items: center;

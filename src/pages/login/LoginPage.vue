@@ -36,7 +36,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { LoginForm } from "@/features/LoginForm/index";
+import { LoginForm } from "@/features/Auth";
 </script>
 <style lang="scss" scoped>
 .login-page {

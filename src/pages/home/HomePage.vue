@@ -29,8 +29,15 @@ import {
 </script>
 <style lang="scss" scoped>
 .home-page {
+  padding-bottom: 100px;
   &__section{
     margin-top: 35px;
   }
+  &__new-matches,
+  &__popular-dogs,
+  &__top-events {
+    padding-left: 30px;
+  }
 }
+
 </style>
